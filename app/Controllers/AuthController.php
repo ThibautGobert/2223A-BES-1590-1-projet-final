@@ -155,4 +155,13 @@ class AuthController
             'success' => 'Inscription réussie !',
         ]);
     }
+
+    public function deconnexion()
+    {
+        $user = Auth::getUser();
+        Auth::setUser(null);
+        Redirect::to('/', [
+            'success' => 'Déconnexion réussie, à bientôt ' . $user->name
+        ]);
+    }
 }

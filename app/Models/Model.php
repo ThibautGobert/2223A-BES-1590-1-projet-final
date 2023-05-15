@@ -77,4 +77,14 @@ class Model
         $stmt = $pdo->prepare($sql);
         $stmt->execute($values);
     }
+
+    public static function all()
+    {
+        $pdo = DB::getInstance();
+        $query = 'select * from '.static::$table;
+        $statement = $pdo->query($query);
+        $statement->setFetchMode(PDO::FETCH_CLASS, User::class);
+        return $statement->fetchAll();
+    }
+
 }

@@ -14,7 +14,8 @@ class UserController
     public function index()
     {
         //fonction qui va retourner la vue index
-
+        $users = User::all();
+        View::render('user-index', 'main', ['users' => $users]);
     }
 
     /**
@@ -25,7 +26,7 @@ class UserController
     public function edit($id)
     {
         $user = User::find($id);
-        View::render('user-edit', 'admin', ['user' => $user]);
+        View::render('user-edit', 'main', ['user' => $user]);
     }
 
     public function update($id)
