@@ -26,6 +26,11 @@ class View
         /**
          * On réinitialise la session pour effacer les messages d'erreur
          */
-        session_destroy();
+
+        foreach ($_SESSION as $key => $value) {
+            if($key !== 'user'){
+                unset($_SESSION[$key]);
+            }
+        }
     }
 }

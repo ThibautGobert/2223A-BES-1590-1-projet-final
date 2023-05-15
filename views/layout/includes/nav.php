@@ -1,5 +1,5 @@
 <?php
-    $user = $_SESSION['user'] ?? null;
+    $user = \App\Utils\Auth::getUser();
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -23,15 +23,15 @@
                 </li>
             </ul>
         </div>
-        <?php if($user){ ?>
+        <?php if($user): ?>
         <ul class="navbar-nav">
             <li class="nav-item dropstart dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><?= $user['email'] ?></a>
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><?= $user->email ?></a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="/deconnexion">Déconnexion</a></li>
                 </ul>
             </li>
         </ul>
-        <?php } ?>
+        <?php endif; ?>
     </div>
 </nav>

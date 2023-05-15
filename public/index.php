@@ -6,7 +6,6 @@ use App\Controllers\HomeController;
 use App\Controllers\UserController;
 use App\Utils\View;
 
-
 require '../vendor/autoload.php';
 
 $router = new AltoRouter();

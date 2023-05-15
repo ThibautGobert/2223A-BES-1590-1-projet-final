@@ -31,6 +31,5 @@ class UserController
     public function update($id)
     {
         $pdo = DB::getInstance();
-        dd($id);
     }
 }

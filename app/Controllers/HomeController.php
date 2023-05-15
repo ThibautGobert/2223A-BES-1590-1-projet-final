@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Utils\Auth;
 use App\Utils\View;
 
 class HomeController

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use App\Utils\Auth;
 use App\Utils\DB;
 use App\Utils\Redirect;
 use App\Utils\View;
@@ -50,13 +51,15 @@ class AuthController
          *
          * on vérifie le mot de passe envoyé avec celui crypté en DB
          * */
-        $passwordOk = password_verify($password,$user->password);
+        $passwordOk = password_verify($password, $user->password);
 
         /**
          * Si le mot de passe est ok
          */
 
         if($passwordOk) {
+            Auth::setUser($user);
+
             Redirect::to('/', ['success' => 'Connexion réussie !']);
         }
         /**
