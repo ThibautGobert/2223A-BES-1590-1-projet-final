@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Models\User;
 use App\Utils\DB;
+use App\Utils\Redirect;
 use App\Utils\View;
 
 class UserController
@@ -32,5 +33,27 @@ class UserController
     public function update($id)
     {
         $pdo = DB::getInstance();
+        $user = User::find($id);
+
+        $name = $_POST['name'];
+        $firstname = $_POST['firstname'];
+        $email = $_POST['email'];
+
+        if(isset($_POST['password']) && isset($_POST['password_confirm'])) {
+            if($_POST['password'] !== $_POST['password_confirm']) {
+                Redirect::to('/user/'.$user->id.'/edit', [
+                    'error' => 'Le mot de passe et le mote de passe de confirmation doivent être identique !'
+                ]);
+            }
+            $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+        }else {
+            $password = $user->password;
+        }
+        User::update($user->id,[
+            'name' => $name,
+            'firstname' => $firstname,
+            'email' => $email,
+            'password' => $password
+        ]);
     }
 }
