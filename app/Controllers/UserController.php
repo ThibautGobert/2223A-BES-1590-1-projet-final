@@ -55,5 +55,9 @@ class UserController
             'email' => $email,
             'password' => $password
         ]);
+
+        Redirect::to('/user/index', [
+            'success' => 'Utilisateur mis à jour avec succès !'
+        ]);
     }
 }

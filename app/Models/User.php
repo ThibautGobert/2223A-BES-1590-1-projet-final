@@ -8,11 +8,4 @@ class User extends Model
     public string $name;
     public string $firstname;
     public string $email;
-
-    public function __construct(int $id = null)
-    {
-
-        parent::__construct($id);
-    }
-
 }

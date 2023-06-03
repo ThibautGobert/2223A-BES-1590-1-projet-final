@@ -3,6 +3,7 @@ session_start();
 
 use App\Controllers\AuthController;
 use App\Controllers\HomeController;
+use App\Controllers\ProjectController;
 use App\Controllers\UserController;
 use App\Utils\View;
 
@@ -19,7 +20,7 @@ $router->map( 'GET', '/deconnexion', [AuthController::class, 'deconnexion'], 'de
 $router->map( 'POST', '/connexion', [AuthController::class, 'connect'], 'connect');
 $router->map( 'GET', '/inscription', [AuthController::class, 'inscription'], 'inscription');
 $router->map( 'POST', '/register', [AuthController::class, 'register'], 'register');
-
+$router->map( 'GET', '/project/index', [ProjectController::class, 'index'], 'project.index');
 $match = $router->match();
 
 if($match) {

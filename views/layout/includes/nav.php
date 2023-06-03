@@ -15,12 +15,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact</a>
                 </li>
+                <?php if(!$user): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/inscription">Inscription</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/connexion">Connexion</a>
                 </li>
+                <?php endif; ?>
+                <?php if($user): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/index">Utilisateur</a>
+                </li>
+                <?php endif; ?>
             </ul>
         </div>
         <?php if($user): ?>

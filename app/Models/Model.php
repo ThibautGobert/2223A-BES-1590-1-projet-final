@@ -10,10 +10,6 @@ class Model
     protected static string $table = '';
     public int $id;
 
-    public function __construct()
-    {
-
-    }
 
     /**
      * Retrouve un modele avec son id
@@ -26,7 +22,7 @@ class Model
         $query = 'select * from '.static::$table.' where id ='.$id;
 
         $statement = $pdo->query($query);
-        $statement->setFetchMode(PDO::FETCH_CLASS, User::class, ['id' => $id]);
+        $statement->setFetchMode(PDO::FETCH_CLASS, static::class, ['id' => $id]);
         return $statement->fetch();
     }
 
@@ -45,7 +41,7 @@ class Model
         }
         $sql =  'select * from '.static::$table.$where;
         $statement = $pdo->prepare($sql);
-        $statement->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+        $statement->setFetchMode(PDO::FETCH_CLASS, static::class);
         $statement->execute($params);
         return $statement->fetchAll();
     }
@@ -104,7 +100,7 @@ class Model
         $pdo = DB::getInstance();
         $query = 'select * from '.static::$table;
         $statement = $pdo->query($query);
-        $statement->setFetchMode(PDO::FETCH_CLASS, User::class);
+        $statement->setFetchMode(PDO::FETCH_CLASS, static::class);
         return $statement->fetchAll();
     }
 
