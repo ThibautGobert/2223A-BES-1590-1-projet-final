@@ -14,4 +14,13 @@ class ProjectController
             'projects' => $projects
         ]);
     }
+
+    public function edit($id)
+    {
+        $project = Project::find($id);
+
+        View::render('project-edit', 'main', [
+            'project' => $project
+        ]);
+    }
 }

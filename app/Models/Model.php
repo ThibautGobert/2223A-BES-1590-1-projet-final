@@ -9,7 +9,7 @@ class Model
 {
     protected static string $table = '';
     public int $id;
-    
+
     /**
      * Retrouve un modele avec son id
      * @param int $id
