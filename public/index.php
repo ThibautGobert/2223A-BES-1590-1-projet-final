@@ -22,6 +22,8 @@ $router->map( 'GET', '/inscription', [AuthController::class, 'inscription'], 'in
 $router->map( 'POST', '/register', [AuthController::class, 'register'], 'register');
 $router->map( 'GET', '/project/index', [ProjectController::class, 'index'], 'project.index');
 $router->map( 'GET', '/project/[i:id]/edit', [ProjectController::class, 'edit'], 'project.edit');
+$router->map( 'POST', '/project/[i:id]/update', [ProjectController::class, 'update'], 'project.update');
+
 $match = $router->match();
 
 if($match) {

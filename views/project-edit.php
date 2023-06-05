@@ -3,7 +3,13 @@
         <div class="row">
             <div class="col-4 mt-3">
                 <label for="category_id" class="form-label">Catégorie</label>
-                <input id="category_id" name="category_id" type="text" class="form-control" value="<?= $project->category_id ?>">
+                <select class="form-select" name="category_id" aria-label="Default select example">
+                    <?php foreach (\App\Enums\Category::getList() as $item): ?>
+                        <option value="<?= $item['id'] ?>"    <?= $item['id'] === $project->category_id ? 'selected' : null ?> >
+                            <?= $item['label'] ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <div class="col-4 mt-3">
                 <label for="title" class="form-label">Titre</label>
@@ -15,9 +21,7 @@
             </div>
             <div class="col-12 mt-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea name="description" id="description" cols="30" class="form-control" rows="10">
-                    <?= $project->description ?>
-                </textarea>
+                <textarea name="description" id="description" cols="30" class="form-control" rows="10"><?= $project->description ?></textarea>
             </div>
         </div>
         <div class="row">

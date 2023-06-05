@@ -17,7 +17,7 @@
                     <td><?= $project->id ?></td>
                     <td><?= $project->title ?></td>
                     <td><?= $project->date ?></td>
-                    <td><?= $project->category_id ?></td>
+                    <td><?= \App\Enums\Category::getDescription($project->category_id) ?></td>
                     <td>
                         <a class="btn btn-primary btn-sm" href="/project/<?= $project->id ?>/edit">
                             <i class="fa fa-edit me-3"></i>Editer
