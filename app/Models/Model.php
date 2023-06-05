@@ -9,8 +9,7 @@ class Model
 {
     protected static string $table = '';
     public int $id;
-
-
+    
     /**
      * Retrouve un modele avec son id
      * @param int $id
@@ -22,7 +21,7 @@ class Model
         $query = 'select * from '.static::$table.' where id ='.$id;
 
         $statement = $pdo->query($query);
-        $statement->setFetchMode(PDO::FETCH_CLASS, static::class, ['id' => $id]);
+        $statement->setFetchMode(PDO::FETCH_CLASS, static::class);
         return $statement->fetch();
     }
 
@@ -103,5 +102,4 @@ class Model
         $statement->setFetchMode(PDO::FETCH_CLASS, static::class);
         return $statement->fetchAll();
     }
-
 }
