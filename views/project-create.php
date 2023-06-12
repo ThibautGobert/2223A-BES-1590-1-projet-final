@@ -28,7 +28,7 @@
             <div class="col-md-12">
                 <div class="mb-3">
                     <label for="images" class="form-label">Ajouter des images</label>
-                    <input class="form-control" type="file" id="images" name="images" multiple>
+                    <input class="form-control" type="file" id="images" name="images[]" multiple>
                 </div>
             </div>
         </div>

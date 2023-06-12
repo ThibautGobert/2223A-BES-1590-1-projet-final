@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Enums\Category;
 use App\Models\Project;
+use App\Utils\File;
 use App\Utils\Redirect;
 use App\Utils\View;
 
@@ -47,6 +48,7 @@ class ProjectController
 
     public function store()
     {
+        dd(File::cleanUpload($_FILES['images']));
         Project::create([
             'title' => $_POST['title'] ?? null,
             'description' => $_POST['description'] ?? null,
