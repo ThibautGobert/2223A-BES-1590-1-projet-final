@@ -48,7 +48,7 @@ class ProjectController
 
     public function store()
     {
-        dd(File::cleanUpload($_FILES['images']));
+        //dd(File::cleanUpload($_FILES['images']));
         Project::create([
             'title' => $_POST['title'] ?? null,
             'description' => $_POST['description'] ?? null,
@@ -68,4 +68,26 @@ class ProjectController
             'success' => 'Projet supprimé avec succès !'
         ]);
     }
+
+    private function handleImages(Project $project)
+    {
+        $images = File::cleanUpload($_FILES['images']);
+
+        foreach($images as $image) {
+            //vérification si on a bien une image
+            if(!empty($image['name']) && $image['tmp_name']) {
+                $path = '/images/'.$project->id.'/'.$image['name'];
+                if(!file_exists($_SERVER['DOCUMENT_ROOT'].'/images/'.$project->id.'/')) {
+                    mkdir($_SERVER['DOCUMENT_ROOT'].'/images/'.$project->id.'/', 0777, true);
+                }
+                file_put_contents($_SERVER['DOCUMENT_ROOT'].$path, file_get_contents($image['tmp_name']));
+                Image::create([
+                    'path' => $path,
+                    'name' => $image['name'],
+                    'project_id' => $project->id,
+                ]);
+            }
+        }
+    }
+
 }
