@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="/project/store" method="post">
+    <form action="/project/store" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-4 mt-3">
                 <label for="category_id" class="form-label">Catégorie</label>
@@ -22,6 +22,14 @@
             <div class="col-12 mt-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" id="description" cols="30" class="form-control" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="images" class="form-label">Ajouter des images</label>
+                    <input class="form-control" type="file" id="images" name="images" multiple>
+                </div>
             </div>
         </div>
         <div class="row">
