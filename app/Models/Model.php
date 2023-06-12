@@ -71,6 +71,7 @@ class Model
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute($values);
+        return static::find($pdo->lastInsertId());
     }
 
     public static function update(int $id, array $params)

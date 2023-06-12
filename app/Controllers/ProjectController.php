@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Enums\Category;
+use App\Models\Image;
 use App\Models\Project;
 use App\Utils\File;
 use App\Utils\Redirect;
@@ -49,12 +50,14 @@ class ProjectController
     public function store()
     {
         //dd(File::cleanUpload($_FILES['images']));
-        Project::create([
+        $project = Project::create([
             'title' => $_POST['title'] ?? null,
             'description' => $_POST['description'] ?? null,
             'category_id' => $_POST['category_id'] ?? null,
             'date' => $_POST['date'] ?? null,
         ]);
+
+        $this->handleImages($project);
 
         Redirect::to('/project/index', [
             'success' => 'Projet créé avec succès !'

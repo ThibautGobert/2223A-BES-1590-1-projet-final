@@ -25,6 +25,13 @@
             </div>
         </div>
         <div class="row">
+            <?php foreach ($project->images() as $image): ?>
+            <div class="col-2">
+                <img class="img-fluid" src="<?= $image->path ?>" alt="<?= $image->name ?>">
+            </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="row">
             <div class="col-md-12 mt-3 text-end">
                 <button type="submit" class="btn btn-success btn-sm">Enregistrer</button>
             </div>
