@@ -23,9 +23,12 @@
                     <a class="nav-link" href="/connexion">Connexion</a>
                 </li>
                 <?php endif; ?>
-                <?php if($user): ?>
+                <?php if($user && $user->email === 'admin@admin.com'): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/index">Utilisateur</a>
+                    <a class="nav-link" href="/user/index">Utilisateurs</a>
+                </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/project/index">Projets</a>
                 </li>
                 <?php endif; ?>
             </ul>

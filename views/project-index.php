@@ -1,5 +1,12 @@
 <div class="container">
     <div class="row">
+        <div class="col-md-12 text-end my-3">
+            <a href="/project/create" class="btn btn-sm btn-success">
+                <i class="fa fa-plus me-2"></i>Créer un nouveau projet
+            </a>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <table class="table-striped table table-bordered">
                 <thead>

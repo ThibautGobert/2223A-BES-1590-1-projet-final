@@ -13,7 +13,7 @@ class ProjectController
     {
         $projects = Project::all();
         View::render('project-index', 'main', [
-            'projects' => $projects
+            'projects' => $projects,
         ]);
     }
 
@@ -37,6 +37,25 @@ class ProjectController
 
         Redirect::to('/project/index', [
             'success' => 'Projet mis à jour avec succès !'
+        ]);
+    }
+
+    public function create()
+    {
+        View::render('project-create', 'main');
+    }
+
+    public function store()
+    {
+        Project::create([
+            'title' => $_POST['title'] ?? null,
+            'description' => $_POST['description'] ?? null,
+            'category_id' => $_POST['category_id'] ?? null,
+            'date' => $_POST['date'] ?? null,
+        ]);
+
+        Redirect::to('/project/index', [
+            'success' => 'Projet créé avec succès !'
         ]);
     }
 }
