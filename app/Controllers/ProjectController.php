@@ -58,4 +58,12 @@ class ProjectController
             'success' => 'Projet créé avec succès !'
         ]);
     }
+
+    public function delete($id)
+    {
+        Project::delete($id);
+        Redirect::to('/project/index', [
+            'success' => 'Projet supprimé avec succès !'
+        ]);
+    }
 }

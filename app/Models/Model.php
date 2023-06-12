@@ -102,4 +102,15 @@ class Model
         $statement->setFetchMode(PDO::FETCH_CLASS, static::class);
         return $statement->fetchAll();
     }
+
+    public static function delete(int $id)
+    {
+        $pdo = DB::getInstance();
+        $query = 'delete from '.static::$table.' where id ='.$id;
+
+        $statement = $pdo->query($query);
+        $statement->execute();
+        return true;
+    }
+
 }

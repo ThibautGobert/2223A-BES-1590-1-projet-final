@@ -29,6 +29,9 @@
                         <a class="btn btn-primary btn-sm" href="/project/<?= $project->id ?>/edit">
                             <i class="fa fa-edit me-3"></i>Editer
                         </a>
+                        <a class="btn btn-danger btn-sm" href="/project/<?= $project->id ?>/delete">
+                            <i class="fa fa-times me-3"></i>Supprimer
+                        </a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
